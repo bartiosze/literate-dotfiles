@@ -1,4 +1,6 @@
 #+TITLE: My Vim configuration file
+#+AUTHOR: Bartosz Kaliszuk
+#+EMAIL: bartosz.kaliszuk@gmail.com
 
 Funny I use emacs to edit this file...
 

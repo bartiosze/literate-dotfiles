@@ -2,10 +2,10 @@
 #+AUTHOR: Bartosz Kaliszuk
 #+EMAIL: bartosz(dot)kaliszuk(at)gmail(dot)com
 
-* Vim configuration file[fn:1]
+* Vim configuration file
 Funny I use emacs to edit this file...
 
-[fn:1] Who needs comments in the configuration files anyway?
+_Who needs comments in the configuration files anyway?_
 
 * Setup the search path for faster =gF= navigation
 

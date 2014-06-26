@@ -1,22 +1,24 @@
 #+ATTR_HTML: :title My Vim configuration file :stype color:red
 #+AUTHOR: Bartosz Kaliszuk
-#+EMAIL: bartosz.kaliszuk@gmail.com
+#+EMAIL: bartosz(dot)kaliszuk(at)gmail(dot)com
 
+* Vim configuration file[fn:1]
 Funny I use emacs to edit this file...
 
-Who needs comments in the configuration files anyway?
+[fn:1] Who needs comments in the configuration files anyway?
 
 * Setup the search path for faster =gF= navigation
 
 Path is automatically expanded for use with Enterprise Components. QHOME can also go there.
 
 #+BEGIN_SRC sh :tangle ~/.vimrc
-" Path is automatically expanded to include EC_SYS_PATH content
 set path=.,$EC_SYS_PATH/bin/ec/*
 #+END_SRC
 
+Lines below are inspired by http://nvie.com/posts/how-i-boosted-my-vim/. Comments are put inline,
+where needed.
+
 #+BEGIN_SRC sh :tangle ~/.vimrc
-" Configuration below is inspired by: http://nvie.com/posts/how-i-boosted-my-vim/
 set nocompatible
 set hidden        " hide buffers instead of closing them
 set nowrap        " don't wrap lines
@@ -43,15 +45,9 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                " change the terminal's title
 set visualbell           " don't beep
 set noerrorbells         " don't beep
+#+END_SRC
 
-" filetype plugin indent on
-" 
-" if has('autocmd')
-"    autocmd filetype python set expandtab
-"    autocmd filetype k set expandtab
-"    autocmd filetype q set expandtab
-" endif
-
+#+BEGIN_SRC sh :tangle ~/.vimrc
 " stolen from https://github.com/carousel/urxvt/
 " Show commads completion in a menu-like display.
 set wildmenu wildmode=full

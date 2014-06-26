@@ -1,4 +1,4 @@
-#+TITLE: My Vim configuration file
+#+ATTR_HTML: :title My Vim configuration file :stype color:red
 #+AUTHOR: Bartosz Kaliszuk
 #+EMAIL: bartosz.kaliszuk@gmail.com
 

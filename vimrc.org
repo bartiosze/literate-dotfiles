@@ -7,20 +7,22 @@ Funny I use emacs to edit this file...
 
 _Who needs comments in the configuration files anyway?_
 
-* Setup the search path for faster =gF= navigation
+** Setup the search path for faster =gF= navigation
 
-Path is automatically expanded for use with Enterprise Components. QHOME can also go there.
+Path is automatically expanded for use with Enterprise
+Components. QHOME can also go there.
 
-#+BEGIN_SRC sh :tangle ~/.vimrc
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set path=.,$EC_SYS_PATH/bin/ec/*
 #+END_SRC
 
-Lines below are inspired by http://nvie.com/posts/how-i-boosted-my-vim/. Comments are put inline,
+Lines below are inspired by
+http://nvie.com/posts/how-i-boosted-my-vim/. Comments are put inline,
 where needed.
 
-#+BEGIN_SRC sh :tangle ~/.vimrc
+** Tabs and spaces
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set nocompatible
-set hidden        " hide buffers instead of closing them
 set nowrap        " don't wrap lines
 set tabstop=4     " a tab is four spaces
 set shiftwidth=4  " number of spaces to use for autoindenting
@@ -28,64 +30,102 @@ set smarttab      " insert tabs on the start of a line according to
                   " shiftwidth, not tabstop
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
+set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
+" highlight spaces and tabs in a more convenint way
+set list listchars=tab:>.,trail:.,extends:#,nbsp:.
+
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
+set hidden        " hide buffers instead of closing them
 set number        " always show line numbers
-set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
-set showmatch     " set show matching parenthesis
-set ignorecase    " ignore case when searching
-set smartcase     " ignore case if search pattern is all lowercase,
-                  "    case-sensitive otherwise
-set hlsearch      " highlight search terms
-set incsearch     " show search matches as you type
 
 set history=1000         " remember more commands and search history
 set undolevels=1000      " use many muchos levels of undo
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                " change the terminal's title
-set visualbell           " don't beep
-set noerrorbells         " don't beep
+set visualbell noerrorbells " dont't beep
 #+END_SRC
 
-#+BEGIN_SRC sh :tangle ~/.vimrc
+** Searching
+Show matching parens. Ignore case if search pattern is all in
+lowercase, case-sensitive otherwise. Highlight search terms and show
+matches as you type.
+
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
+set showmatch
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch 
+#+END_SRC
+
+
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 " stolen from https://github.com/carousel/urxvt/
 " Show commads completion in a menu-like display.
-set wildmenu wildmode=full
-set cursorline
-set showcmd
+set wildmenu wildmode=full  " completion menu instead of cycling through results
+set cursorline              " highlight current line
+set showcmd                 " show partial commands
 set laststatus=2
 set splitright splitbelow
 " set cursorcolumn " usefull for text allign
+#+END_SRC
 
-" highlight spaces and tabs in a more convenint way
-set list listchars=tab:>.,trail:.,extends:#,nbsp:.
-
+** Movement
+Try to learing using hjkl instead of arrows. 
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 " no arrow keys here, sorry
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+#+END_SRC
 
-" move around multiple windows
+Easier moving between windows.
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+#+END_SRC
 
-" from http://forrst.com/posts/Use_w_to_sudo_write_a_file_with_Vim-uAN
+
+** Misc
+*** =sudo= save file
+Stolen from http://forrst.com/posts/Use_w_to_sudo_write_a_file_with_Vim-uAN
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 cmap w!! w !sudo tee % >/dev/null
-" Make yanking behave like kill-ring in emacs.
+#+END_SRC
+
+*** Yanking like a kill-ring in emacs.
+Requires =yankring= installed. 
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 nnoremap <silent> <F11> :YRShow<CR>
-" history folder is now ~/.vim instead of $HOME
 let g:yankring_history_dir = "$HOME/.vim"
+#+END_SRC
+
+*** Code indents
+**** Reformat XMLs on filter command
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 " format xml files using xmlling: http://ku1ik.com/2011/09/08/formatting-xml-in-vim-with-indent-command.html
-au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
-" try to format q code
+"au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+#+END_SRC
+
+**** Try to format q code
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 au FileType q setlocal et sw=2 ts=2 sts=2 cino+=}2
-" This one is pretty cool. I like comments but I don't like them to get in the
-" way of code. zM - close all folds (comments). zR - open all folds
+#+END_SRC
+
+
+This one is pretty cool. I like comments but I don't like them to get
+in the way of code. =zM= - close all folds (comments). =zR= - open all
+folds
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 au Filetype q set foldmethod=expr |
             \ set foldexpr=getline(v:lnum)=~'^\\s*/'
+#+END_SRC
 
+**** =zenburn= everywhere
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 colorscheme zenburn
 #+END_SRC

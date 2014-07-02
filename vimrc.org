@@ -31,7 +31,7 @@ set smarttab      " insert tabs on the start of a line according to
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
-" highlight spaces and tabs in a more convenint way
+" highlight spaces and tabs in a more convenient way
 set list listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 set autoindent    " always set autoindenting on
@@ -40,7 +40,7 @@ set hidden        " hide buffers instead of closing them
 set number        " always show line numbers
 
 set history=1000         " remember more commands and search history
-set undolevels=1000      " use many muchos levels of undo
+set undolevels=1000      " use many levels of undo
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                " change the terminal's title
 set visualbell noerrorbells " dont't beep

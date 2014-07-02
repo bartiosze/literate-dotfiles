@@ -31,14 +31,21 @@ set smarttab      " insert tabs on the start of a line according to
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
-" highlight spaces and tabs in a more convenient way
-set list listchars=tab:>.,trail:.,extends:#,nbsp:.
+#+END_SRC
 
+Highlight spaces and tabs in a more convenint way
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
+set list listchars=tab:>.,trail:.,extends:#,nbsp:.
+#+END_SRC
+
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
 set hidden        " hide buffers instead of closing them
 set number        " always show line numbers
+#+END_SRC
 
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set history=1000         " remember more commands and search history
 set undolevels=1000      " use many levels of undo
 set wildignore=*.swp,*.bak,*.pyc,*.class

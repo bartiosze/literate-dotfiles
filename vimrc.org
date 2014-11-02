@@ -9,8 +9,8 @@ _Who needs comments in the configuration files anyway?_
 
 ** Setup the search path for faster =gF= navigation
 
-Path is automatically expanded for use with Enterprise
-Components. QHOME can also go there.
+Path is automatically expanded for use with Enterprise Components.
+QHOME can also go there.
 
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set path=.,$EC_SYS_PATH/bin/ec/*
@@ -20,14 +20,21 @@ Lines below are inspired by
 http://nvie.com/posts/how-i-boosted-my-vim/. Comments are put inline,
 where needed.
 
-** Tabs and spaces
+** Appearance
+*** Compatibility
+Turn off vi compatibility. It's 21st century after all...
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set nocompatible
 set nowrap        " don't wrap lines
+#+END_SRC
+
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set tabstop=4     " a tab is four spaces
 set shiftwidth=4  " number of spaces to use for autoindenting
 set smarttab      " insert tabs on the start of a line according to
                   " shiftwidth, not tabstop
+#+END_SRC
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
@@ -41,10 +48,11 @@ set list listchars=tab:>.,trail:.,extends:#,nbsp:.
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
+#+END_SRC
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set hidden        " hide buffers instead of closing them
 set number        " always show line numbers
 #+END_SRC
-
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set history=1000         " remember more commands and search history
 set undolevels=1000      " use many levels of undo

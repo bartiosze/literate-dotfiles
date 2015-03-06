@@ -7,52 +7,66 @@ Funny I use emacs to edit this file...
 
 _Who needs comments in the configuration files anyway?_
 
-** Setup the search path for faster =gF= navigation
 
-Path is automatically expanded for use with Enterprise Components.
-QHOME can also go there.
-
-#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
-set path=.,$EC_SYS_PATH/bin/ec/*
-#+END_SRC
-
-Lines below are inspired by
-http://nvie.com/posts/how-i-boosted-my-vim/. Comments are put inline,
-where needed.
-
-** Appearance
-*** Compatibility
-Turn off vi compatibility. It's 21st century after all...
+** Compatibility
+It is sometimes hard to work on older machines with compatibility
+turned off, but on a daily basis it helps. It's 21st century after
+all...
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set nocompatible
+#+END_SRC
+
+** Appearance
+
+*** Lines
+Terminal windows are wider than 150 columns these days. Turn line
+wraping by default.
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set nowrap        " don't wrap lines
 #+END_SRC
 
+*** Tabs
+In most cases I like my code indented to four spaces. For legacy code
+(using TABs) I prefer four-space tabs. When inserting TABs, I like
+them expanded to spaces. Furthermore, TAB key on the start of a line
+follows =shiftwidth= settings instead of `tabstop`.
+
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
-set tabstop=4     " a tab is four spaces
-set shiftwidth=4  " number of spaces to use for autoindenting
-set smarttab      " insert tabs on the start of a line according to
-                  " shiftwidth, not tabstop
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
 #+END_SRC
+
+*** Indenting
+As a lazy person I prefer my code to be indented automatically. I also
+like when the indentation level follows previous-line indentation.
+
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
+set autoindent    " always set autoindenting on
+set copyindent    " copy the previous indentation on autoindenting
+#+END_SRC
+
+*** Backspacing
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 #+END_SRC
 
+*** Whitespace characters handling
 Highlight spaces and tabs in a more convenint way
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set list listchars=tab:>.,trail:.,extends:#,nbsp:.
 #+END_SRC
 
-#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
-set autoindent    " always set autoindenting on
-set copyindent    " copy the previous indentation on autoindenting
-#+END_SRC
+*** Buffer handling
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set hidden        " hide buffers instead of closing them
 set number        " always show line numbers
 #+END_SRC
+
+*** Undo
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set history=1000         " remember more commands and search history
 set undolevels=1000      " use many levels of undo
@@ -67,17 +81,29 @@ lowercase, case-sensitive otherwise. Highlight search terms and show
 matches as you type.
 
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
-set showmatch
 set ignorecase
 set smartcase
 set hlsearch
 set incsearch 
 #+END_SRC
 
-
+For the =hlsearch= option above, add a convenient way to turn search
+highlight off.
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+endif
+#+END_SRC
+
+And when inserting parens, blink the matching pair.
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
+set showmatch
+#+END_SRC
+
+
 " stolen from https://github.com/carousel/urxvt/
 " Show commads completion in a menu-like display.
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 set wildmenu wildmode=full  " completion menu instead of cycling through results
 set cursorline              " highlight current line
 set showcmd                 " show partial commands
@@ -87,15 +113,16 @@ set splitright splitbelow
 #+END_SRC
 
 ** Movement
-Try to learing using hjkl instead of arrows. 
+*** Navigation
+Try to learing using `hjkl' instead of arrows. 
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
-" no arrow keys here, sorry
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 #+END_SRC
 
+*** Window movement
 Easier moving between windows.
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 map <C-h> <C-w>h
@@ -106,6 +133,8 @@ map <C-l> <C-w>l
 
 
 ** Misc
+I should put more plugins here probably. Need at least one free
+weekend to read more from tpope...
 *** =sudo= save file
 Stolen from http://forrst.com/posts/Use_w_to_sudo_write_a_file_with_Vim-uAN
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
@@ -143,4 +172,23 @@ au Filetype q set foldmethod=expr |
 **** =zenburn= everywhere
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 colorscheme zenburn
+#+END_SRC
+*** Setup the search path for faster =gF= navigation
+   
+Path is automatically expanded for use with Enterprise Components by
+Exxeleron. QHOME can also go there if not using EC.
+
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
+set path=.,$EC_SYS_PATH/bin/ec/*
+#+END_SRC
+
+Lines below are inspired by
+http://nvie.com/posts/how-i-boosted-my-vim/. Comments are put inline,
+where needed.
+*** Fish support
+I try to move away from bash to fish so to not stress me that much. 
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
+if &shell =~# 'fish$'
+  set shell=/bin/bash
+endif
 #+END_SRC

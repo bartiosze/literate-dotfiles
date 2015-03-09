@@ -192,3 +192,26 @@ if &shell =~# 'fish$'
   set shell=/bin/bash
 endif
 #+END_SRC
+** Plugins
+Modern Vim comes with dozens of community-contributed plugins. One can
+find them in different places. I'm using mostly GitHub based plugins.
+I'm also using plugins to manage plugins.
+
+*** Pathogen integration
+Pathogen is a library that simplifies plugins installation. You can
+fetch it from https://github.com/tpope/vim-pathogen and install it as
+=~/.vim/autoload/pathogen.vim=.
+
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+#+END_SRC
+
+*** Airline
+vim-airline is a power modeline for Vim. Available here: https://github.com/bling/vim-airline.
+
+
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
+let g:airline_theme='luna'
+#+END_SRC

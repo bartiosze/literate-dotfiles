@@ -209,9 +209,16 @@ filetype plugin indent on
 #+END_SRC
 
 *** Airline
-vim-airline is a power modeline for Vim. Available here: https://github.com/bling/vim-airline.
+vim-airline is a power modeline for Vim. Available here:
+https://github.com/bling/vim-airline.
 
 
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
 let g:airline_theme='luna'
 #+END_SRC
+
+*** Signature
+You can fetch vim-signature from
+https://github.com/kshenoy/vim-signature.
+
+There is no customization for vim-signature on my side for now.

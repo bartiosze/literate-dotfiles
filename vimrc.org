@@ -141,13 +141,6 @@ Stolen from http://forrst.com/posts/Use_w_to_sudo_write_a_file_with_Vim-uAN
 cmap w!! w !sudo tee % >/dev/null
 #+END_SRC
 
-*** Yanking like a kill-ring in emacs.
-Requires =yankring= installed. 
-#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
-nnoremap <silent> <F11> :YRShow<CR>
-let g:yankring_history_dir = "$HOME/.vim"
-#+END_SRC
-
 *** Code indents
 **** Reformat XMLs on filter command
 #+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
@@ -222,3 +215,21 @@ You can fetch vim-signature from
 https://github.com/kshenoy/vim-signature.
 
 There is no customization for vim-signature on my side for now.
+
+*** Yanking like a kill-ring in emacs.
+Requires =yankring= installed. 
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
+nnoremap <silent> <F11> :YRShow<CR>
+let g:yankring_history_dir = "$HOME/.vim"
+#+END_SRC
+
+
+
+*** Rainbow Parentheses
+Enable rainbow parentheses
+
+#+BEGIN_SRC vimrc-mode :tangle ~/.vimrc
+let g:rainbow_active = 1
+#+END_SRC
+
+
